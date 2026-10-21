@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almango Pop · Mar del Plata</title>
+<meta name="description" content="Almango Pop, de Mar del Plata, en escena desde 1997: la banda de covers para fiestas y eventos, la música original de Almango Pop Music y el proyecto solista de Ale Gondra.">
+<meta property="og:title" content="Almango Pop · Mar del Plata">
+<meta property="og:description" content="Covers en vivo para tu evento, música original y el proyecto solista de Ale Gondra.">
+<meta property="og:image" content="img/logo-original.png">
+<link rel="icon" href="img/logo-original.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #07040f;
+    --tarjeta: #140c24;
+    --borde: #2e2148;
+    --texto: #f3ecff;
+    --apagado: #c2b3e0;
+    --cian: #1adbb7;
+    --magenta: #ff2ec4;
+    --naranja: #f0643a;
+    --amarillo: #ffff6b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; overflow-x: hidden; }
+  body {
+    background: radial-gradient(ellipse at 50% -10%, #2a0f4a 0%, var(--fondo) 60%) fixed, var(--fondo);
+    color: var(--texto);
+    font-family: 'Rajdhani', Arial, sans-serif;
+    font-size: 17px;
+    min-height: 100vh;
+  }
+  header { text-align: center; padding: 28px 16px 8px; }
+  header img { width: min(420px, 80vw); height: auto; display: block; margin: 0 auto 10px; }
+  header p { margin: 0; color: var(--apagado); letter-spacing: 3px; text-transform: uppercase; font-size: 15px; }
+  main {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    max-width: 1180px; margin: 26px auto 0; padding: 0 16px;
+  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; max-width: 520px; } }
+  .proyecto {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+    background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 18px; overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .proyecto:hover, .proyecto:focus-visible { transform: translateY(-6px); border-color: var(--c); box-shadow: 0 14px 40px -12px var(--c); outline: none; }
+  .proyecto .marco { height: 190px; display: flex; align-items: center; justify-content: center; background: #000; padding: 18px; }
+  .proyecto .marco img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .proyecto .cuerpo { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .proyecto .etiqueta { color: var(--c); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; }
+  .proyecto h2 { margin: 0; font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; font-size: 36px; letter-spacing: 1px; line-height: 1; }
+  .proyecto p { margin: 0; color: var(--apagado); line-height: 1.35; flex: 1; }
+  .proyecto .ir {
+    margin-top: 10px; align-self: flex-start; background: var(--c); color: #07040f; font-weight: 700;
+    padding: 10px 18px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center;
+  }
+  .covers { --c: var(--magenta); }
+  .original { --c: var(--cian); }
+  .solista { --c: #ffb54a; }
+  footer { text-align: center; padding: 34px 16px 30px; color: var(--apagado); font-size: 15px; }
+  footer a { color: var(--texto); text-decoration: none; border-bottom: 1px solid var(--borde); margin: 0 8px; line-height: 2.2; }
+  footer a:hover { border-color: var(--cian); }
+  @media (prefers-reduced-motion: reduce) { .proyecto { transition: none; } .proyecto:hover { transform: none; } }
+</style>
+</head>
+<body>
+  <header>
+    <img src="img/logo-almango-pop.png" alt="Almango Pop">
+    <p>Mar del Plata · desde 1997</p>
+  </header>
+
+  <main>
+    <a class="proyecto covers" href="https://covers.almangopop.com.ar">
+      <div class="marco"><img src="img/logo-covers.png" alt="Almango Pop Covers"></div>
+      <div class="cuerpo">
+        <span class="etiqueta">Contratá el show</span>
+        <h2>Almango Pop Covers</h2>
+        <p>Los grandes hits del pop y el rock de los 70s, 80s y 90s, en vivo. Para fiestas, casamientos, empresas y eventos.</p>
+        <span class="ir">Ver la banda →</span>
+      </div>
+    </a>
+
+    <a class="proyecto original" href="https://original.almangopop.com.ar">
+      <div class="marco"><img src="img/xpromo-music.png" alt="Almango Pop Music"></div>
+      <div class="cuerpo">
+        <span class="etiqueta">Música original</span>
+        <h2>Almango Pop Music</h2>
+        <p>Las canciones propias de la banda: cuatro discos, uno de ellos doble. Para escuchar, con letras y acordes.</p>
+        <span class="ir">Escuchar →</span>
+      </div>
+    </a>
+
+    <a class="proyecto solista" href="https://alegondra.almangopop.com.ar">
+      <div class="marco"><img src="img/logo-alegondra.png" alt="Ale Gondra Music"></div>
+      <div class="cuerpo">
+        <span class="etiqueta">Proyecto solista</span>
+        <h2>Ale Gondra</h2>
+        <p>El proyecto solista de Ale Gondra, voz y guitarra de Almango Pop: autor, compositor y cantante.</p>
+        <span class="ir">Conocer →</span>
+      </div>
+    </a>
+  </main>
+
+  <footer>
+    <div>
+      <a href="https://wa.me/5492235455451">WhatsApp 223 545-5451</a>
+      <a href="https://www.instagram.com/almangopopmusic/">Instagram</a>
+      <a href="https://www.facebook.com/almangopopmusic">Facebook</a>
+      <a href="https://www.youtube.com/@almangopopmusic">YouTube</a>
+      <a href="https://open.spotify.com/intl-es/artist/2FFcPKqSBGTMqJn3HJKwJc">Spotify</a>
+    </div>
+  </footer>
+</body>
+</html>
