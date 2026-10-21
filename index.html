@@ -82,8 +82,10 @@
   @keyframes giro { to { --giro: 360deg; } }
   .covers video, .covers .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transform: scale(1.04); transition: transform 6s ease; }
   .covers:hover video { transform: scale(1.12); }
+  /* en escritorio el video va a la derecha: la banda queda a la vista y el texto, sobre el oscuro */
+  @media (min-width: 761px) { .covers video, .covers .poster { left: auto; width: 68%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%); mask-image: linear-gradient(90deg, transparent 0%, #000 30%); } .covers { background: #07040f; } }
   .covers .velo { position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(90deg, rgba(7,4,15,.92) 0%, rgba(7,4,15,.72) 42%, rgba(7,4,15,.15) 75%, rgba(7,4,15,.35) 100%),
+    background: linear-gradient(90deg, rgba(7,4,15,1) 0%, rgba(7,4,15,.95) 32%, rgba(7,4,15,.35) 48%, rgba(7,4,15,0) 62%, rgba(7,4,15,.2) 100%),
                 linear-gradient(0deg, rgba(7,4,15,.6), transparent 40%); }
   .covers .contenido { position: relative; z-index: 2; padding: 42px 40px; max-width: 620px; display: flex; flex-direction: column; gap: 12px; min-height: 440px; justify-content: center; }
   .covers .logo-covers { width: 150px; height: auto; filter: drop-shadow(0 0 18px rgba(255,46,196,.6)); animation: flota 4s ease-in-out infinite; }
@@ -133,6 +135,7 @@
     .covers .contenido { padding: 28px 22px; justify-content: flex-end; }
     .covers .velo { background: linear-gradient(0deg, rgba(7,4,15,.95) 0%, rgba(7,4,15,.7) 55%, rgba(7,4,15,.2) 100%); }
     .covers .logo-covers { width: 110px; }
+    .covers video, .covers .poster { object-position: 45% 50%; }
     .covers p { font-size: 17px; }
   }
   @media (prefers-reduced-motion: reduce) {
