@@ -7,110 +7,235 @@
 <meta name="description" content="Almango Pop, de Mar del Plata, en escena desde 1997: la banda de covers para fiestas y eventos, la música original de Almango Pop Music y el proyecto solista de Ale Gondra.">
 <meta property="og:title" content="Almango Pop · Mar del Plata">
 <meta property="og:description" content="Covers en vivo para tu evento, música original y el proyecto solista de Ale Gondra.">
-<meta property="og:image" content="img/logo-original.png">
+<meta property="og:image" content="img/covers-en-vivo.jpg">
 <link rel="icon" href="img/logo-original.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --fondo: #07040f;
-    --tarjeta: #140c24;
     --borde: #2e2148;
-    --texto: #f3ecff;
-    --apagado: #c2b3e0;
-    --cian: #1adbb7;
-    --magenta: #ff2ec4;
-    --naranja: #f0643a;
+    --texto: #f5efff;
+    --apagado: #c9bce6;
     --amarillo: #ffff6b;
+    --cian: #1adbb7;
+    --naranja: #f0643a;
+    --violeta: #9a12b3;
+    --magenta: #ff2ec4;
+    --dorado: #ffb54a;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; overflow-x: hidden; }
-  body {
-    background: radial-gradient(ellipse at 50% -10%, #2a0f4a 0%, var(--fondo) 60%) fixed, var(--fondo);
-    color: var(--texto);
-    font-family: 'Rajdhani', Arial, sans-serif;
-    font-size: 17px;
-    min-height: 100vh;
+  body { background: var(--fondo); color: var(--texto); font-family: 'Rajdhani', Arial, sans-serif; font-size: 17px; min-height: 100vh; }
+
+  /* ===== FONDO VIVO: aurora + partículas ===== */
+  .aurora {
+    position: fixed; inset: -20%; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(40% 35% at 20% 25%, rgba(255,46,196,.35), transparent 70%),
+      radial-gradient(35% 30% at 80% 20%, rgba(26,219,183,.30), transparent 70%),
+      radial-gradient(40% 35% at 70% 80%, rgba(240,100,58,.28), transparent 70%),
+      radial-gradient(35% 30% at 25% 85%, rgba(154,18,179,.35), transparent 70%);
+    filter: blur(30px);
+    animation: aurora 18s ease-in-out infinite alternate;
   }
-  header { text-align: center; padding: 28px 16px 8px; }
-  header img { width: min(420px, 80vw); height: auto; display: block; margin: 0 auto 10px; }
-  header p { margin: 0; color: var(--apagado); letter-spacing: 3px; text-transform: uppercase; font-size: 15px; }
-  main {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
-    max-width: 1180px; margin: 26px auto 0; padding: 0 16px;
+  @keyframes aurora {
+    0%   { transform: translate(0,0) rotate(0deg) scale(1); }
+    50%  { transform: translate(4%,-3%) rotate(8deg) scale(1.08); }
+    100% { transform: translate(-4%,3%) rotate(-6deg) scale(1.02); }
   }
-  @media (max-width: 900px) { main { grid-template-columns: 1fr; max-width: 520px; } }
-  .proyecto {
-    display: flex; flex-direction: column; text-decoration: none; color: inherit;
-    background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 18px; overflow: hidden;
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  #particulas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .capa { position: relative; z-index: 1; }
+
+  /* ===== CABECERA ===== */
+  header { text-align: center; padding: 34px 16px 6px; }
+  .logo { width: min(560px, 86vw); height: auto; display: block; margin: 0 auto;
+    animation: entra 1.1s cubic-bezier(.2,.8,.2,1) both, brillo 4s ease-in-out 1.2s infinite; }
+  @keyframes entra { from { opacity: 0; transform: translateY(-30px) scale(.85); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
+  @keyframes brillo {
+    0%,100% { filter: drop-shadow(0 0 0 rgba(255,46,196,0)); }
+    50%     { filter: drop-shadow(0 0 22px rgba(255,46,196,.55)) drop-shadow(0 0 40px rgba(26,219,183,.35)); }
   }
-  .proyecto:hover, .proyecto:focus-visible { transform: translateY(-6px); border-color: var(--c); box-shadow: 0 14px 40px -12px var(--c); outline: none; }
-  .proyecto .marco { height: 190px; display: flex; align-items: center; justify-content: center; background: #000; padding: 18px; }
-  .proyecto .marco img { max-width: 100%; max-height: 100%; object-fit: contain; }
-  .proyecto .cuerpo { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .proyecto .etiqueta { color: var(--c); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; }
-  .proyecto h2 { margin: 0; font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; font-size: 36px; letter-spacing: 1px; line-height: 1; }
-  .proyecto p { margin: 0; color: var(--apagado); line-height: 1.35; flex: 1; }
-  .proyecto .ir {
-    margin-top: 10px; align-self: flex-start; background: var(--c); color: #07040f; font-weight: 700;
-    padding: 10px 18px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center;
+  .bajada { margin: 10px 0 0; color: var(--apagado); letter-spacing: 4px; text-transform: uppercase; font-size: 15px; animation: aparece .9s ease .6s both; }
+  .eq { display: flex; justify-content: center; align-items: flex-end; gap: 5px; height: 38px; margin: 18px auto 0; }
+  .eq span { width: 7px; border-radius: 3px; background: linear-gradient(to top, var(--magenta), var(--amarillo)); animation: barra 1s ease-in-out infinite; }
+  .eq span:nth-child(3n)   { background: linear-gradient(to top, var(--cian), var(--amarillo)); }
+  .eq span:nth-child(4n+1) { background: linear-gradient(to top, var(--naranja), var(--amarillo)); }
+  @keyframes barra { 0%,100% { height: 8px; } 50% { height: 38px; } }
+  @keyframes aparece { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  /* ===== COVERS: la protagonista ===== */
+  main { max-width: 1180px; margin: 26px auto 0; padding: 0 16px; }
+  .covers {
+    position: relative; display: block; overflow: hidden; border-radius: 22px; min-height: 440px;
+    text-decoration: none; color: inherit;
+    box-shadow: 0 20px 60px -20px rgba(255,46,196,.6);
+    animation: aparece .9s ease .4s both;
   }
-  .covers { --c: var(--magenta); }
-  .original { --c: var(--cian); }
-  .solista { --c: #ffb54a; }
+  .covers::before {
+    content: ''; position: absolute; inset: 0; border-radius: 22px; z-index: 3; padding: 3px; pointer-events: none;
+    background: conic-gradient(from var(--giro), var(--magenta), var(--amarillo), var(--cian), var(--naranja), var(--magenta));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: giro 6s linear infinite;
+  }
+  @property --giro { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+  @keyframes giro { to { --giro: 360deg; } }
+  .covers video, .covers .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transform: scale(1.04); transition: transform 6s ease; }
+  .covers:hover video { transform: scale(1.12); }
+  .covers .velo { position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(7,4,15,.92) 0%, rgba(7,4,15,.72) 42%, rgba(7,4,15,.15) 75%, rgba(7,4,15,.35) 100%),
+                linear-gradient(0deg, rgba(7,4,15,.6), transparent 40%); }
+  .covers .contenido { position: relative; z-index: 2; padding: 42px 40px; max-width: 620px; display: flex; flex-direction: column; gap: 12px; min-height: 440px; justify-content: center; }
+  .covers .logo-covers { width: 150px; height: auto; filter: drop-shadow(0 0 18px rgba(255,46,196,.6)); animation: flota 4s ease-in-out infinite; }
+  @keyframes flota { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+  .etiqueta { font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 14px; }
+  .covers .etiqueta { color: var(--amarillo); }
+  .covers h2 { margin: 0; font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; line-height: .95; font-size: clamp(46px, 7vw, 78px); letter-spacing: 1px;
+    background: linear-gradient(90deg, #fff 0%, var(--amarillo) 25%, var(--magenta) 50%, #fff 75%); background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    animation: reflejo 6s linear infinite; }
+  @keyframes reflejo { to { background-position: -300% 0; } }
+  .covers p { margin: 0; color: #eadff8; font-size: 19px; line-height: 1.4; }
+  .botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .boton { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: 17px; }
+  .boton.lleno { background: var(--magenta); color: #10061c; animation: late 2.2s ease-out infinite; }
+  @keyframes late { 0% { box-shadow: 0 0 0 0 rgba(255,46,196,.6); } 100% { box-shadow: 0 0 0 18px rgba(255,46,196,0); } }
+  .boton.borde { border: 2px solid rgba(255,255,255,.75); color: #fff; }
+
+  /* ===== LOS OTROS DOS ===== */
+  .otros { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+  @media (max-width: 760px) { .otros { grid-template-columns: 1fr; } }
+  .proyecto { --c: var(--cian); display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 18px;
+    text-decoration: none; color: inherit; background: rgba(19,11,34,.85); border: 1px solid var(--borde);
+    border-radius: 18px; padding: 18px; position: relative; overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; animation: aparece .9s ease both; }
+  .proyecto:nth-child(1) { animation-delay: .7s; }
+  .proyecto:nth-child(2) { animation-delay: .85s; --c: var(--dorado); }
+  .proyecto::after { content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.12), transparent); transform: skewX(-20deg); transition: left .7s ease; }
+  .proyecto:hover::after { left: 120%; }
+  .proyecto:hover, .proyecto:focus-visible { transform: translateY(-5px); border-color: var(--c); box-shadow: 0 14px 40px -14px var(--c); outline: none; }
+  .proyecto .marco { width: 150px; height: 110px; border-radius: 12px; background: #000; display: flex; align-items: center; justify-content: center; padding: 8px; }
+  .proyecto .marco img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform .4s ease; }
+  .proyecto:hover .marco img { transform: scale(1.08) rotate(-2deg); }
+  .proyecto .etiqueta { color: var(--c); font-size: 13px; }
+  .proyecto h3 { margin: 4px 0 6px; font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; font-size: 32px; line-height: 1; letter-spacing: 1px; }
+  .proyecto p { margin: 0; color: var(--apagado); line-height: 1.35; font-size: 16px; }
+  .proyecto .ir { display: inline-block; margin-top: 10px; color: var(--c); font-weight: 700; }
+  @media (max-width: 460px) { .proyecto { grid-template-columns: 1fr; } .proyecto .marco { width: 100%; } }
+
   footer { text-align: center; padding: 34px 16px 30px; color: var(--apagado); font-size: 15px; }
-  footer a { color: var(--texto); text-decoration: none; border-bottom: 1px solid var(--borde); margin: 0 8px; line-height: 2.2; }
+  footer a { display: inline-flex; align-items: center; min-height: 32px; color: var(--texto); text-decoration: none; border-bottom: 1px solid var(--borde); margin: 0 8px; }
   footer a:hover { border-color: var(--cian); }
-  @media (prefers-reduced-motion: reduce) { .proyecto { transition: none; } .proyecto:hover { transform: none; } }
+
+  @media (max-width: 760px) {
+    .covers, .covers .contenido { min-height: 520px; }
+    .covers .contenido { padding: 28px 22px; justify-content: flex-end; }
+    .covers .velo { background: linear-gradient(0deg, rgba(7,4,15,.95) 0%, rgba(7,4,15,.7) 55%, rgba(7,4,15,.2) 100%); }
+    .covers .logo-covers { width: 110px; }
+    .covers p { font-size: 17px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    #particulas { display: none; }
+  }
 </style>
 </head>
 <body>
-  <header>
-    <img src="img/logo-almango-pop.png" alt="Almango Pop">
-    <p>Mar del Plata · desde 1997</p>
-  </header>
+  <div class="aurora" aria-hidden="true"></div>
+  <canvas id="particulas" aria-hidden="true"></canvas>
 
-  <main>
-    <a class="proyecto covers" href="https://covers.almangopop.com.ar">
-      <div class="marco"><img src="img/logo-covers.png" alt="Almango Pop Covers"></div>
-      <div class="cuerpo">
-        <span class="etiqueta">Contratá el show</span>
-        <h2>Almango Pop Covers</h2>
-        <p>Los grandes hits del pop y el rock de los 70s, 80s y 90s, en vivo. Para fiestas, casamientos, empresas y eventos.</p>
-        <span class="ir">Ver la banda →</span>
+  <div class="capa">
+    <header>
+      <img class="logo" src="img/logo-almango-pop.png" alt="Almango Pop">
+      <p class="bajada">Mar del Plata · desde 1997</p>
+      <div class="eq" aria-hidden="true">
+        <span style="animation-delay:-.1s"></span><span style="animation-delay:-.6s"></span><span style="animation-delay:-.3s"></span>
+        <span style="animation-delay:-.8s"></span><span style="animation-delay:-.2s"></span><span style="animation-delay:-.5s"></span>
+        <span style="animation-delay:-.9s"></span><span style="animation-delay:-.4s"></span><span style="animation-delay:-.7s"></span>
+        <span style="animation-delay:-.15s"></span><span style="animation-delay:-.65s"></span><span style="animation-delay:-.35s"></span>
       </div>
-    </a>
+    </header>
 
-    <a class="proyecto original" href="https://original.almangopop.com.ar">
-      <div class="marco"><img src="img/xpromo-music.png" alt="Almango Pop Music"></div>
-      <div class="cuerpo">
-        <span class="etiqueta">Música original</span>
-        <h2>Almango Pop Music</h2>
-        <p>Las canciones propias de la banda: cuatro discos, uno de ellos doble. Para escuchar, con letras y acordes.</p>
-        <span class="ir">Escuchar →</span>
-      </div>
-    </a>
+    <main>
+      <a class="covers" href="https://covers.almangopop.com.ar">
+        <img class="poster" src="img/covers-en-vivo.jpg" alt="">
+        <video autoplay muted loop playsinline preload="auto" poster="img/covers-en-vivo.jpg">
+          <source src="img/covers-en-vivo.mp4" type="video/mp4">
+        </video>
+        <div class="velo"></div>
+        <div class="contenido">
+          <img class="logo-covers" src="img/logo-covers.png" alt="">
+          <span class="etiqueta">La banda para tu evento</span>
+          <h2>Almango Pop Covers</h2>
+          <p>Los grandes hits del pop y el rock de los 70s, 80s y 90s, en vivo. Para fiestas, casamientos, empresas y eventos.</p>
+          <div class="botones">
+            <span class="boton lleno">Contratá el show →</span>
+            <span class="boton borde">Ver la banda</span>
+          </div>
+        </div>
+      </a>
 
-    <a class="proyecto solista" href="https://alegondra.almangopop.com.ar">
-      <div class="marco"><img src="img/logo-alegondra.png" alt="Ale Gondra Music"></div>
-      <div class="cuerpo">
-        <span class="etiqueta">Proyecto solista</span>
-        <h2>Ale Gondra</h2>
-        <p>El proyecto solista de Ale Gondra, voz y guitarra de Almango Pop: autor, compositor y cantante.</p>
-        <span class="ir">Conocer →</span>
-      </div>
-    </a>
-  </main>
+      <section class="otros">
+        <a class="proyecto" href="https://original.almangopop.com.ar">
+          <div class="marco"><img src="img/xpromo-music.png" alt="Almango Pop Music"></div>
+          <div>
+            <span class="etiqueta">Música original</span>
+            <h3>Almango Pop Music</h3>
+            <p>Las canciones propias de la banda: cuatro discos, uno de ellos doble.</p>
+            <span class="ir">Escuchar →</span>
+          </div>
+        </a>
+        <a class="proyecto" href="https://alegondra.almangopop.com.ar">
+          <div class="marco"><img src="img/logo-alegondra.png" alt="Ale Gondra Music"></div>
+          <div>
+            <span class="etiqueta">Proyecto solista</span>
+            <h3>Ale Gondra</h3>
+            <p>El proyecto solista de Ale Gondra, voz y guitarra de Almango Pop.</p>
+            <span class="ir">Conocer →</span>
+          </div>
+        </a>
+      </section>
+    </main>
 
-  <footer>
-    <div>
+    <footer>
       <a href="https://wa.me/5492235455451">WhatsApp 223 545-5451</a>
       <a href="https://www.instagram.com/almangopopmusic/">Instagram</a>
       <a href="https://www.facebook.com/almangopopmusic">Facebook</a>
       <a href="https://www.youtube.com/@almangopopmusic">YouTube</a>
       <a href="https://open.spotify.com/intl-es/artist/2FFcPKqSBGTMqJn3HJKwJc">Spotify</a>
-    </div>
-  </footer>
+    </footer>
+  </div>
+
+<script>
+// Partículas: notas y puntitos de colores que suben despacio. Se apagan con
+// «reducir movimiento» del sistema y no dibujan con la pestaña escondida.
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c = document.getElementById('particulas'), x = c.getContext('2d');
+  var colores = ['#ffff6b', '#1adbb7', '#f0643a', '#ff2ec4', '#9a12b3'];
+  var simbolos = ['♪', '♫', '•', '•', '•'];
+  var P = [], W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function medir() { W = innerWidth; H = innerHeight; c.width = W * dpr; c.height = H * dpr; c.style.width = W + 'px'; c.style.height = H + 'px'; x.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function nueva(y) { return { x: Math.random() * W, y: y == null ? H + 20 : y, v: .25 + Math.random() * .7, t: 10 + Math.random() * 16,
+    c: colores[Math.random() * colores.length | 0], s: simbolos[Math.random() * simbolos.length | 0], a: .25 + Math.random() * .5, o: Math.random() * 6.28 }; }
+  medir(); addEventListener('resize', medir);
+  var cant = Math.round(Math.min(60, W / 22));
+  for (var i = 0; i < cant; i++) P.push(nueva(Math.random() * H));
+  function cuadro() {
+    if (!document.hidden) {
+      x.clearRect(0, 0, W, H);
+      for (var i = 0; i < P.length; i++) {
+        var p = P[i]; p.y -= p.v; p.o += .02; var dx = Math.sin(p.o) * 12;
+        if (p.y < -30) P[i] = nueva();
+        x.globalAlpha = p.a; x.fillStyle = p.c; x.font = p.t + 'px Arial';
+        x.fillText(p.s, p.x + dx, p.y);
+      }
+    }
+    requestAnimationFrame(cuadro);
+  }
+  cuadro();
+})();
+</script>
 </body>
 </html>
